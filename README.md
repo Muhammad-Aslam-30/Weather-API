@@ -6,9 +6,6 @@ A command line application, that queries a weather API and orders locations by b
 - Wind forecasts are not precise, i.e. differences of 5 km/h are not considered.
 - Second criterion for best weather location been considered based on the how good the sun will shine.
 
-# CLI interface
-![Sample Image](images/final_output.jpg)
-
 # Weather API
 For this work, the url https://open-meteo.com/ has been used to make requests.
 
@@ -54,3 +51,6 @@ weather_code_ranges = {
     (99, 99): "Thunderstorm with Heavy Hail",
 }
 ```
+
+# CLI interface output
+![Sample Image](images/final_output.jpg)
