@@ -94,23 +94,24 @@ class WeatherAPI:
         self.result = []
         self.windspeed_based_locations.sort()
         min_weathercode = self.windspeed_based_locations[0][0]
-        self.result.append((self.windspeed_based_locations[0][1], self.windspeed_based_locations[0][2], self.windspeed_based_locations[0][0], self.windspeed_based_locations[0][3]))
+        self.result.append((self.windspeed_based_locations[0][2], self.windspeed_based_locations[0][1], self.windspeed_based_locations[0][0], self.windspeed_based_locations[0][3]))
         for wcode_loc in self.windspeed_based_locations[1:]:
             if wcode_loc[0] < min_weathercode:
                 self.result = []    
-                self.result.append((wcode_loc[1], wcode_loc[2], wcode_loc[0], wcode_loc[3]))
+                self.result.append((wcode_loc[2], wcode_loc[1], wcode_loc[0], wcode_loc[3]))
             elif wcode_loc[0] == min_weathercode:
-                self.result.append((wcode_loc[1], wcode_loc[2], wcode_loc[0], wcode_loc[3]))
-        return self.result
+                self.result.append((wcode_loc[2], wcode_loc[1], wcode_loc[0], wcode_loc[3]))
+        #self.result = sorted(self.result)
+        return sorted(self.result)
     
 class DisplayTable:
 
     def create_table(self, result):
         # Prepare data for the table
         table_data = []
-        
-        for entry in result:
-            location, windspeed, weathercode, temperature = entry
+        for i in range(len(result)-1, -1, -1):
+            entry = result[i]
+            windspeed, location, weathercode, temperature = entry
             # Determine weather description based on weather code
             for code_range, description in weather_code_ranges.items():
                 if code_range[0] <= weathercode <= code_range[1]:
