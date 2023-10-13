@@ -5,7 +5,7 @@ from tabulate import tabulate
 from dataclasses import dataclass
 
 SPOTS_LAT_LONG = {
-    'Altenteil Fehmarn': (54.4667, 11.1333),
+    #'Altenteil Fehmarn': (54.4667, 11.1333),
     'Ammersee': (48.0011, 11.1333),
     'Bodensee': (47.6667, 9.1667),
     'Chiemsee': (47.8667, 12.35),
@@ -42,7 +42,7 @@ class WeatherAPI:
 
     def __init__(self, api_url) -> None:
             self.api_url = api_url
-            self.max_windspeed = -1
+            self.max_windspeed = 0
             self.windspeed_based_locations = []
             self.result = []
 
@@ -78,10 +78,12 @@ class WeatherAPI:
             wind_weather = self._make_api_request(coordinates, offset_hours, location)
             if wind_weather is not None:
                 windspeed, weathercode, temperature = wind_weather
-                if windspeed > self.max_windspeed:
+                min_windspeed_range = self.max_windspeed - 5
+                max_windspeed_range = self.max_windspeed + 5
+                if windspeed >= max_windspeed_range:
                     self.max_windspeed = windspeed
                     self.windspeed_based_locations = [(weathercode, location, windspeed, temperature)]
-                elif weathercode == self.max_windspeed:
+                elif windspeed >= min_windspeed_range and windspeed <= max_windspeed_range:
                     self.windspeed_based_locations.append((weathercode, location, windspeed, temperature))
 
         if not self.windspeed_based_locations:
@@ -102,6 +104,7 @@ class WeatherAPI:
         return self.result
     
 class DisplayTable:
+
     def create_table(self, result):
         # Prepare data for the table
         table_data = []
@@ -126,9 +129,11 @@ def main():
     parser = argparse.ArgumentParser(description="Find the best location based on wind speed and weather code")
     parser.add_argument("offset_hours", type=int, help="Offset hours for the API request")
     args = parser.parse_args()
+    # To Request API
     api_url = "api.open-meteo.com" 
     weather_call = WeatherAPI(api_url)
     result = weather_call.get_best_location(args.offset_hours)
+    # To create table output in the CLI
     table_formatter = DisplayTable()
     table = table_formatter.create_table(result)
     print(table)
