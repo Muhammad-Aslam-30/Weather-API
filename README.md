@@ -19,7 +19,7 @@ curl "https://api.open-meteo.com/v1/forecast?latitude=48.1374&longitude=11.5755&
 # Locations
 
 The following dictionary has been used as known surf locations to check:
-
+```python
 SPOTS_LAT_LONG = {
     'Altenteil Fehmarn': (54.4667, 11.1333),
     'Ammersee': (48.0011, 11.1333),
@@ -32,11 +32,11 @@ SPOTS_LAT_LONG = {
     'Tegernsee': (47.7, 11.7333),
     'Walchensee': (47.6, 11.3667),
 }
-
+```
 # Weather Codes
 
 The following dictionary has been used to check for weather codes:
-
+```python
 weather_code_ranges = {
     (0, 0): "Sunny",
     (1, 10): "Mainly Clear",
@@ -52,3 +52,4 @@ weather_code_ranges = {
     (98, 98): "Sleet Showers",
     (99, 99): "Thunderstorm with Heavy Hail",
 }
+```
