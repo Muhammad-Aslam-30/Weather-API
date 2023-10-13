@@ -2,9 +2,9 @@
 A command line application, that queries a weather API and orders locations by best wind surfing conditions at a user-defined time offset (hours).
 
 # What are good surfing conditions?
-Most importantly, we need wind as the single most important criterion.
-Wind forecasts are not precise, i.e. differences of 5 km/h are not considered.
-Second criterion for best weather location been considered based on the how good the sun will shine.
+- Most importantly, we need wind as the single most important criterion.
+- Wind forecasts are not precise, i.e. differences of 5 km/h are not considered.
+- Second criterion for best weather location been considered based on the how good the sun will shine.
 
 # CLI interface
 ![Sample Image](images/final_output.jpg)
