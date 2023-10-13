@@ -13,8 +13,9 @@ Second criterion for best weather location been considered based on the how good
 For this work, the url https://open-meteo.com/ has been used to make requests.
 
 Following is the weather forecast request for Munich.
-
+```bash
 curl "https://api.open-meteo.com/v1/forecast?latitude=48.1374&longitude=11.5755&hourly=temperature_2m,weathercode,windspeed_10m"
+```
 
 # Locations
 
