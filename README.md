@@ -56,6 +56,8 @@ weather_code_ranges = {
 
 Sample outputs
 
-![Sample Image](images/output1.jpg)
+![Sample Image](images/output_1.jpg)
 
-![Sample Image](images/output2.jpg)
+![Sample Image](images/output_2.jpg)
+
+![Sample Image](images/output_3.jpg)
