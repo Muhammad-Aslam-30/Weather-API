@@ -53,4 +53,5 @@ weather_code_ranges = {
 ```
 
 # CLI interface output
-![Sample Image](images/final_output.jpg)
+![Sample Image](images/output1.jpg)
+![Sample Image](images/output2.jpg)
